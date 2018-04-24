@@ -1,7 +1,7 @@
 # ale-clj
 Some simple examples using Clojure to create agents for
 [The Arcade Learning Environment](https://github.com/mgbellemare/Arcade-Learning-Environment) using
-the [JavaCPP Presets ALE module. ](https://github.com/bytedeco/javacpp-presets/tree/master/ale).
+the [JavaCPP Presets ALE module](https://github.com/bytedeco/javacpp-presets/tree/master/ale).
 
 
 ## Random Agent
