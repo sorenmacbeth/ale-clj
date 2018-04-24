@@ -6,9 +6,7 @@ the [JavaCPP Presets ALE module](https://github.com/bytedeco/javacpp-presets/tre
 
 ## Random Agent
 
-Here's an example of starting a game and running it through several episodes where
-actions are randomly selected. This assumes you have a ROM for Kaboom in the `roms`
-directory.
+Here's an example of starting a game and running it through several episodes with randomly selected actions. This assumes you have a ROM for Kaboom in the `roms` directory.
 
 ``` clojure
 (require '[ale-clj.core :refer [start-game reset-game act game-over?]])
@@ -29,8 +27,7 @@ directory.
     rewards)
 ```
 
-We can make this a little more interesting by displaying the game screens while it's running.
-Forgive the clumsy approach to animating this.
+We can make this a little more interesting by displaying the game screens while it's running. I'm sure there are nicer ways to go about animating this, but this works well enough for thiese little examples.
 
 ``` clojure
 (require '[ale-clj.screen :refer [set-screen-ints]]
@@ -60,12 +57,12 @@ Forgive the clumsy approach to animating this.
     rewards)
 
 ```
-To reduce the number of features, it's handy to subtract the (hopefully) static background from the game screens. It doesn't matter for the random agent, but I thought it would be cute to show what the that looks like.
-This can be done by adding the following require:
+It's handy to subtract the (hopefully) static background from the game screens to reduce the number of features. It doesn't matter for this random agent, but I thought it would be cute to show what the that looks like.
+You can do this by requiring:
 ``` clojure
 (require '[ale-clj.background :refer [subtract-background]])
 ```
-and by insertering `(subtract-background game)` after `(set-screen-ints)` in the `game-episode` function.
+and insertering `(subtract-background game)` after `(set-screen-ints)` in the `game-episode` function.
 This will only work if we actually determine what the background looks like, so if there
 isn't a file for the game in the `backgrounds` directory, you'll have to create one.
 Check the `examples` directory to see how that's done.
