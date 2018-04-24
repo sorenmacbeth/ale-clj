@@ -36,9 +36,8 @@
         actions (map #(.get ^IntPointer actions-ptr ^int %)
                      (range (.capacity ^IntPointer actions-ptr)))
         num-episodes 10
-        rewards (reduce +
-                        (for [i (range num-episodes)]
-                          (game-episode ale actions (= (inc i) num-episodes))))]
+        rewards (for [i (range num-episodes)]
+                  (reduce + (game-episode ale actions (= (inc i) num-episodes))))]
     rewards))
 
 ;;; An example of grabing and displaying screen data

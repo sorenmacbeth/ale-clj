@@ -7,7 +7,8 @@ the [JavaCPP Presets ALE module. ](https://github.com/bytedeco/javacpp-presets/t
 ## Random Agent
 
 Here's an example of starting a game and running it through several episodes where
-actions are randomly selected.
+actions are randomly selected. This assumes you have a ROM for Kaboom in the `roms`
+directory.
 
 ``` clojure
 (require '[ale-clj.core :refer [start-game reset-game act game-over?]])
@@ -59,9 +60,7 @@ Forgive the clumsy approach to animating this.
     rewards)
 
 ```
-In order to reduce the number of features, it's handy to subtract the (hopefully) static background
-from the game screens. It doesn't matter for the random agent, but I thought it would be cute to show 
-what the that looks like.
+To reduce the number of features, it's handy to subtract the (hopefully) static background from the game screens. It doesn't matter for the random agent, but I thought it would be cute to show what the that looks like.
 This can be done by adding the following require:
 ``` clojure
 (require '[ale-clj.background :refer [subtract-background]])
@@ -71,8 +70,7 @@ This will only work if we actually determine what the background looks like, so 
 isn't a file for the game in the `backgrounds` directory, you'll have to create one.
 Check the `examples` directory to see how that's done.
 
-Another way to reduce the feature set is to tile the screen and we can see what that looks like
-by requiring this:
+Another way to reduce the feature set is to tile the screen and we can see what that looks like by requiring this:
 
 ``` clojure
 (require '[ale-clj.tiles :refer [tiled-screen-ints]])
