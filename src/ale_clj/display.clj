@@ -1,29 +1,23 @@
 (ns ale-clj.display
   (:import [javax.swing JFrame JPanel]
            [java.awt Dimension]
-           [java.awt.image BufferedImage AffineTransformOp]
-           [java.awt.geom AffineTransform]
+           [java.awt.image BufferedImage]
            [java.awt Color]))
 
 (defn get-screen-image
   "Returns a Bufferedimage object of the current game screen."
   [{:keys [screen-ints width height] :as game}]
   (let [image (BufferedImage. width height BufferedImage/TYPE_INT_RGB)
-        at (AffineTransform.)
-        _ (.scale at 2.0 2.0)
-        scale-op (AffineTransformOp. at AffineTransformOp/TYPE_BILINEAR)
-        height (int height) width (int width)
-        scaled-image (BufferedImage.
-                      (* 2 width) (* 2 height) BufferedImage/TYPE_INT_RGB)]
+        height (int height) width (int width)]
     (dotimes [i height]
       (dotimes [j width]
         (let [k (+ (* i width ) j)]
           (.setRGB image j i (.getRGB (Color. (aget ^ints screen-ints k)))))))
-    (.filter scale-op image scaled-image)))
+    image))
 
 (defn create-frame [width height]
   (doto (JFrame.)
-    (.setSize (Dimension. (* 2.0 width) (* 2.0 height)))
+    (.setSize (Dimension. width height))
     (.show)))
 
 (defn display-screen [game]
