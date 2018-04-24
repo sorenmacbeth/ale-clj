@@ -27,7 +27,7 @@ Here's an example of starting a game and running it through several episodes wit
     rewards)
 ```
 
-We can make this a little more interesting by displaying the game screens while it's running. I'm sure there are nicer ways to go about animating this, but this works well enough for thiese little examples.
+We can make this a little more interesting by displaying the game screens while it's running. I'm sure there are nicer ways to go about animating this, but this works well enough for these little examples.
 
 ``` clojure
 (require '[ale-clj.screen :refer [set-screen-ints]]
