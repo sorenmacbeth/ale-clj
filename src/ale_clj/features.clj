@@ -15,6 +15,8 @@
         (let [tile-color (aget ^ints screen-ints (deep-aget ints tiles i j))
               background-color (aget ^ints screen-background
                                      (deep-aget ints tiles i j))
+              ;; this bit shiftiness takes the screen color and
+              ;; turns it into a number from 0-7
               idx (bit-shift-right (bit-and tile-color 0xf) 1)]
           (when
               (and

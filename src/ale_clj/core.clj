@@ -16,9 +16,8 @@
 ;; as in the ALE Java example and unfortunately it isn't currently
 ;; possible to modify the color palette through the
 ;; ALEInterface object since theOSystem object wasn't included
-;; in the JavaCPP presets interface. I'm still trying to work out
-;; how to add it.
-
+;; in the JavaCPP presets interface. This should be doable
+;; once JavaCPP 1.4.2 is released.
 
 (defn start-game
   "Returns a map that contains the ALEInterface object through which

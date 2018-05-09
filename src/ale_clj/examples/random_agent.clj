@@ -22,7 +22,7 @@
 
 (defn random-example []
   (let [rom "Kaboom.bin"
-        max-episodes 10
+        max-episodes 20
         game (start-game rom)
         {:keys [width height]} game
         frame (create-frame width height)

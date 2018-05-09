@@ -75,10 +75,10 @@
     (ale/reset-game game)
     (features/tiled-secam-features game features)
     (loop [game-over? false
-            rewards []
-            q-old (double 0.0)
-            action (select-action qs epsilon)
-            step 0]
+           rewards []
+           q-old (double 0.0)
+           action (select-action qs epsilon)
+           step 0]
        (if (or game-over? (= step max-steps))
          rewards
          (let [_ (display-screen game)
@@ -133,16 +133,17 @@
 
 (defn online-sarsa-example []
   (let [rom "Kaboom.bin"
-        game (ale/start-game rom :display-screen? false)
+        game (ale/start-game rom)
         {:keys [actions tiles width height]} game
         frame (create-frame width height)
         num-tiles (count tiles)
         num-actions (count actions) num-colors 8
+        episodes 20
         params {:rom rom :epsilon 0.1 :lambda 0.9 :gamma 0.999 :alpha 0.01
-                :num-episodes 10 :trace-threshold 0.01 :num-colors num-colors
+                :num-episodes episodes :trace-threshold 0.01 :num-colors num-colors
                 :num-tiles num-tiles :num-actions num-actions}
         num-features (* num-colors num-tiles)
         weights (make-array Double/TYPE num-actions num-features)
-        total-rewards (learn (merge game {:frame frame}) weights params)]
+        total-rewards (learn (assoc game :frame frame) weights params)]
     (dispose-frame frame)
     total-rewards))
